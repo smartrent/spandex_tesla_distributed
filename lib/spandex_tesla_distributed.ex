@@ -73,10 +73,10 @@ defmodule SpandexTeslaDistributed do
   end
 
   defp tracer do
-    Application.fetch_env!(:spandex_tesla_tracer, :tracer)
+    Application.fetch_env!(:spandex_tesla_distributed, :tracer)
   end
 
   defp service do
-    Application.get_env(:spandex_tesla_tracer, :service, :tesla)
+    Application.get_env(:spandex_tesla_distributed, :service, :tesla)
   end
 end
