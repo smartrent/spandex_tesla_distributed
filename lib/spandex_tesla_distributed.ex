@@ -49,7 +49,7 @@ defmodule SpandexTeslaDistributed do
           case Tesla.run(Tesla.put_headers(env, headers), next) do
             {:ok, env} ->
               case env.status do
-                status when status not in 200.299 ->
+                status when status not in 200..299 ->
                   tracer.update_span(http: [status_code: env.status])
                   tracer.span_error(%Error{message: "Request failed with status response #{env.status}"})
                   {:ok, env}
