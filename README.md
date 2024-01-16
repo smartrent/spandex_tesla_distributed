@@ -6,7 +6,7 @@ Tesla Middleware for Spandex that supports distributed tracing
 ```elixir
 def deps do
   [
-    {:spandex_tesla_distributed, github: "smartrent/spandex_tesla_distributed", branch: "master"}
+    {:spandex_tesla_distributed, "~> 0.1.0"}
   ]
 end
 ```
