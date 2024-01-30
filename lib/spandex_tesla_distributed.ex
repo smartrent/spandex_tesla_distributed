@@ -51,16 +51,24 @@ defmodule SpandexTeslaDistributed do
               case env.status do
                 status when status in 400..599 ->
                   tracer.update_span(http: [status_code: env.status])
-                  tracer.span_error(%Error{message: "Request failed with status response #{env.status}"}, nil, [])
+
+                  tracer.span_error(
+                    %Error{message: "Request failed with status response #{env.status}"},
+                    nil,
+                    []
+                  )
+
                   {:ok, env}
+
                 _ ->
                   tracer.update_span(http: [status_code: env.status])
                   {:ok, env}
 
-            {:error, reason} = e ->
-              tracer.span_error(%Error{message: inspect(reason)}, nil, [])
+                {:error, reason} = e ->
+                  tracer.span_error(%Error{message: inspect(reason)}, nil, [])
 
-              e
+                  e
+              end
           end
         catch
           kind, reason ->
