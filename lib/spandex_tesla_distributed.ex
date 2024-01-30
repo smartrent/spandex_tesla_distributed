@@ -61,6 +61,7 @@ defmodule SpandexTeslaDistributed do
               tracer.span_error(%Error{message: inspect(reason)}, nil, [])
 
               e
+              end
           end
         catch
           kind, reason ->
