@@ -63,12 +63,12 @@ defmodule SpandexTeslaDistributed do
                 _ ->
                   tracer.update_span(http: [status_code: env.status])
                   {:ok, env}
-
-                {:error, reason} = e ->
-                  tracer.span_error(%Error{message: inspect(reason)}, nil, [])
-
-                  e
               end
+
+            {:error, reason} = e ->
+              tracer.span_error(%Error{message: inspect(reason)}, nil, [])
+
+              e
           end
         catch
           kind, reason ->
